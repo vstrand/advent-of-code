@@ -1,0 +1,6 @@
+# Ignore dist/ from 2020. Advent of Code was solved with TypeScript this year,
+# and compiled files were outputted to /dist.
+2020/**/dist/
+2020/**/data/
+
+node_modules/
