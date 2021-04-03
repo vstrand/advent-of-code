@@ -3,14 +3,15 @@ use std::fs;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
+    let mut part = "1";
 
-    if args.len() == 1 {
-        part_1();
-        return;
+    if args.len() > 1 {
+        // argument given as --part=<part>
+        let parts: Vec<&str> = args[1].split("=").collect();
+        part = parts[1];
     }
 
-    let parts: Vec<&str> = args[1].split("=").collect();
-    let part = parts[1];
+    println!("Part #{}:", part);
 
     if part == "1" {
         part_1();
@@ -20,7 +21,6 @@ fn main() {
 }
 
 fn part_1() {
-    println!("Part #1:");
     let auth = SledRentalAuth::new();
     println!(
         "Number of valid passwords: {}",
@@ -29,7 +29,6 @@ fn part_1() {
 }
 
 fn part_2() {
-    println!("Part #2:");
     let auth = TobogganCorporateAuth::new();
     println!(
         "Number of valid passwords: {}",
