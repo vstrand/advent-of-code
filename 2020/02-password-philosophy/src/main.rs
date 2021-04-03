@@ -1,23 +1,8 @@
-use std::env;
-use std::fs;
+use aoc::argument_parser;
+use aoc::reader;
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    let mut part = "1";
-
-    if args.len() > 1 {
-        // argument given as --part=<part>
-        let parts: Vec<&str> = args[1].split("=").collect();
-        part = parts[1];
-    }
-
-    println!("Part #{}:", part);
-
-    if part == "1" {
-        part_1();
-    } else {
-        part_2();
-    }
+    argument_parser::parse_and_run(part_1, part_2);
 }
 
 fn part_1() {
@@ -37,16 +22,7 @@ fn part_2() {
 }
 
 fn read_policies_and_passwords() -> Vec<String> {
-    let data = fs::read_to_string("data.txt")
-        .expect("Unable to read data!");
-
-    let policies_and_passwords: Vec<String> = data
-        .split("\n")
-        .into_iter()
-        .map(|s| s.to_string())
-        .collect();
-
-    policies_and_passwords
+    reader::read_data()
 }
 
 fn get_valid_passwords(auth: impl Auth) -> i32 {
