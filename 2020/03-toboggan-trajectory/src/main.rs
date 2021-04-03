@@ -44,9 +44,9 @@ fn count_trees_for_slope(slope: (usize, usize)) -> u32 {
     let mut current_x: usize = 0;
 
     while current_y < map_max_height {
-        let cells: Vec<u8> = map[current_y].bytes().collect();
+        let cells: Vec<char> = map[current_y].chars().collect();
 
-        if cells[current_x].eq(&b'#') {
+        if cells[current_x].eq(&'#') {
             trees_encountered += 1;
         }
 
